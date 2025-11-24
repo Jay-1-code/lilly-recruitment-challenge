@@ -30,3 +30,26 @@ body {
 }
 
 /* ---- Your custom styles below ---- */
+.Search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+}
+
+.second_row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+.third_row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

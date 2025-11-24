@@ -27,7 +27,7 @@ function hide_med(){
     document.getElementById("display").style.display = "none";
 }
 
-//change gearname
+
 async function Search_for_medicine() {
     let search = document.getElementById('MedName').value.trim();
     console.log(search);
@@ -50,6 +50,7 @@ async function get_average() {
 
     const response = await fetch("http://127.0.0.1:8000/average");
     const med = await response.json();
+    console.log("med");
 
     const display = document.getElementById("average");
     display.innerHTML= `Average : ${med.message}
@@ -161,27 +162,25 @@ async function update_Med() {
     const search = await med_response.json();
     console.log(search.error);
 
-    if (!search.error){
-        
-    if (formData.get('name') && formData.get("quantity") != "" || null){
-        const response = await fetch("http://127.0.0.1:8000/update", {
-            method: "POST",
-            body: formData
-        });
+    if (formData.get('name') && formData.get("price") != "" || null){
+        if (!search.error){
+            const response = await fetch("http://127.0.0.1:8000/update", {
+                method: "POST",
+                body: formData
+            });
 
-        const data = await response.json();
-        const display = document.getElementById("update_display");
-        display.innerText = data.message;
-        console.log(`${formData.get("name")} i exist `)
-        }
-        else{
-            alert("Fill both input");
-            console.log(`${formData.get("name")} dont exist`)
-        };
-    } 
+            const data = await response.json();
+            const display = document.getElementById("update_display");
+            display.innerText = data.message;
+            console.log(`${formData.get("name")} i exist `)
+            }
+            else{
+                alert(`${formData.get("name")} does not exist`)
+                console.log(`${formData.get("name")} dont exist`)
+            };
+        } 
     else{
-        alert(`${formData.get("name")} does not exist`)
-        
+        alert("Fill both input");
     };
 
 }

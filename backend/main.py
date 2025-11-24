@@ -135,11 +135,14 @@ def get_average():
 
         for med in current_db['medicines']:
             price = med['price']
+            print("DEBUG price:", price, type(price))
+
             if isinstance(price,(float,int)):
                 total_price += price
-                valid += 1
+                valid_price_count += 1
             else:
                 invalid_price_count += 1
+
 
         if valid_price_count == 0:
             return{"message": "No Valid Input"}

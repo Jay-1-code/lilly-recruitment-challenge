@@ -14,19 +14,16 @@
         <h1>Medicine Tracker</h1>
     </header>
     <main>
+        <div class="Search" >
         <input id="MedName" placeholder="Search by name">
         <button onclick="Search_for_medicine()">Search</button>
-        <div id="search"></div>
-
-        <button onclick="Display_all_med()">Display all</button>
-        <div id="display" style="display:block;"></div>
-
-
-        <button onclick="get_average()"> Average </button>
-        <div id="average_" style="display:block;" >
-            <div id="average"> </div>
         </div>
+        <div id="search"></div> <!--remember to add this at the buttom-->
 
+
+        
+
+        <div class="second_row">
         <button onclick="open_add_Med()"> Add gear </button>
         <div id="add_popup" style="display:none;"> 
             <form id ="add_form">
@@ -38,8 +35,6 @@
         </div>
         <div id="add_display"></div>
 
-
-                
         <button onclick="open_update()">Update Quantity</button>
         <div id = "update_popup" style="display:none;">
             <form id="update_form">
@@ -51,14 +46,27 @@
         </div>
         <div id="update_display"></div>
 
-
         <button onclick="show_delete_button()">Delete</button>
         <form id="delete_name" style="display: none;">
             <input name="name" placeholder="Medicine Name">
             <button type="button" onclick="delete_Med()">Delete</button>
         </form>
         <div id="result"></div>
+        </div>
 
+        <div class="third_row">
+        <button onclick="Display_all_med()">Display all</button>
+        <div id="display" style="display:block;"></div>
+
+        <button onclick="get_average()"> Average </button>
+        <div id="average_" style="display:block;" >
+            <div id="average"> </div>
+        </div>
+        </div>
+
+        <div class="results">
+            <div id="average"> </div>
+        </div>
 
 
     </main>
