@@ -31,24 +31,28 @@ function hide_med(){
 async function Search_for_medicine() {
     let search = document.getElementById('MedName').value.trim();
     console.log(search);
+        if (search != ""){
+            const response = await fetch(`http://127.0.0.1:8000/medicines/${search}`);
+            const med = await response.json();
+            const display = document.getElementById("search");
 
-        const response = await fetch(`http://127.0.0.1:8000/medicines/${search}`);
-        const med = await response.json();
-        const display = document.getElementById("search");
-
-        if(!med.error){
-        display.innerHTML = `${search} - price : ${med["price"]}`;
-        console.log(search);
-        }
+                if(!med.error){
+                display.innerHTML = `${search} - price : ${med["price"]}`;
+                console.log(search);
+                console.log(med.error);
+                }
+                else{
+                    alert("Name does not exist");
+                }}
         else{
-            display.innerHTML =  med.error
-        }
+            alert("Input A Name");
+        };
     };
 
 
 async function get_average() {
 
-    const response = await fetch("http://127.0.0.1:8000/average");
+    const response = await fetch("http://127.0.0.1:8000/averages");
     const med = await response.json();
     console.log("med");
 
@@ -71,8 +75,9 @@ async function delete_Med(){
 
     const med_response = await fetch(`http://127.0.0.1:8000/medicines/${formData.get("name")}`);
     const search = await med_response.json();
+    console.log(search.error);
 
-    if (!search.error){
+    if (!search.error && medName != ""){
         const check = confirm(`Are you sure you want to delete "${medName}" `);
         if (check){
             console.log("Deleting:", FormData);
@@ -80,7 +85,7 @@ async function delete_Med(){
             const response = await fetch(`http://127.0.0.1:8000/delete`, {
             method: "DELETE" , body: formData });
             const data = await response.json();
-            console.log(data);
+            //console.log(data);
 
             const display = document.getElementById("result");
             display.innerText = data.message;

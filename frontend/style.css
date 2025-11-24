@@ -32,27 +32,33 @@ body {
 /* ---- Your custom styles below ---- */
 
 h1 {
+  margin-top: 100px;
   text-align: center;
   color: rgb(20, 17, 17)
 }
 
 .Search{
+  margin-top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   row-gap: 1500px;
   column-gap: 20px;
 
+
 }
 
 #MedName{
     height: 50px;
     width: 450px;
+    border-radius: 15px;
+    padding: 20px;
 }
 
 
 
 .second_row{
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,9 +69,15 @@ h1 {
 
 
 .third_row{
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   row-gap: 5px;
   column-gap: 10px;
+}
+
+#average{
+  text-align: center;
+  color: red;
 }

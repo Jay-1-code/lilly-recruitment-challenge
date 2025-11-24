@@ -125,9 +125,9 @@ def delete_med(name: str = Form(...)):
     return {"error": "Medicine not found"}
 
 # Add your average function here
-@app.get("/average")
+@app.get("/averages")
 def get_average():
-    with open("file.json") as meds:
+    with open("data.json") as meds:
         current_db = json.load(meds)
         total_price = 0
         invalid_price_count = 0
@@ -135,7 +135,6 @@ def get_average():
 
         for med in current_db['medicines']:
             price = med['price']
-            print("DEBUG price:", price, type(price))
 
             if isinstance(price,(float,int)):
                 total_price += price
