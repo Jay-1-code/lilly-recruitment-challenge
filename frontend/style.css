@@ -52,9 +52,14 @@ h1 {
     height: 50px;
     width: 450px;
     border-radius: 15px;
+    border: solid black;
     padding: 20px;
+
 }
 
+#MedName:focus{
+  background-color: rgb(162, 255, 0);
+}
 
 
 .second_row{
@@ -66,7 +71,15 @@ h1 {
   column-gap: 10px;
 }
 
-
+.below{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 5px;
+  column-gap: 10px;
+  margin-left: 20px;
+}
 
 .third_row{
   margin-top: 10px;
@@ -78,6 +91,30 @@ h1 {
 }
 
 #average{
+  margin-top: 7px;
   text-align: center;
   color: red;
+}
+
+#display{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  border-radius: 8px;
+  height: 30px;
+}
+
+input{
+  height: 30px;
+  border-radius: 15px;
+  width:200px ;
+  padding: 20px;
+}
+
+input:focus{
+  background-color: bisque;
+  height:35px
 }

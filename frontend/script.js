@@ -60,11 +60,11 @@ async function get_average() {
     display.innerHTML= `Average : ${med.message}
     <button type="button" onclick="hide_average()">DONE</button>`; 
 
-    document.getElementById("average_").style.display = "block"
+    document.getElementById("average").style.display = "block"
 }
 
 function hide_average(){
-    document.getElementById("average_").style.display = "none";
+    document.getElementById("average").style.display = "none";
 }
 
 
@@ -176,7 +176,8 @@ async function update_Med() {
 
             const data = await response.json();
             const display = document.getElementById("update_display");
-            display.innerText = data.message;
+            //display.innerText = data.message;
+            alert(data.message)
             console.log(`${formData.get("name")} i exist `)
             }
             else{
