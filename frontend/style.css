@@ -30,19 +30,34 @@ body {
 }
 
 /* ---- Your custom styles below ---- */
+
+h1 {
+  text-align: center;
+  color: rgb(20, 17, 17)
+}
+
 .Search{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  row-gap: 1500px;
+  column-gap: 20px;
 
 }
+
+#MedName{
+    height: 50px;
+    width: 450px;
+}
+
+
 
 .second_row{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  row-gap: 5px;
+  column-gap: 10px;
 }
 
 
@@ -51,5 +66,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  row-gap: 5px;
+  column-gap: 10px;
 }

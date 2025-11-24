@@ -5,7 +5,7 @@ async function Display_all_med() {
 
     const med_list = meds.medicines;
     const list = document.getElementById("display");
-    list.innerHTML= '<button type="button" onclick="hide_gear()">DONE</button>';
+    list.innerHTML= '<button type="button" onclick="hide_med()">DONE</button>';
     list.style.display = "block";
 
     for(let i = 0; i < med_list.length; i++){
@@ -32,19 +32,19 @@ async function Search_for_medicine() {
     let search = document.getElementById('MedName').value.trim();
     console.log(search);
 
-    if (!search) { 
-        search = "empty string";
-        alert("Input A Name");
+        const response = await fetch(`http://127.0.0.1:8000/medicines/${search}`);
+        const med = await response.json();
+        const display = document.getElementById("search");
+
+        if(!med.error){
+        display.innerHTML = `${search} - price : ${med["price"]}`;
+        console.log(search);
+        }
+        else{
+            display.innerHTML =  med.error
+        }
     };
 
-    const response = await fetch(`http://127.0.0.1:8000/medicines/${search}`);
-    const med = await response.json();
-
-    const display = document.getElementById("search");
-    display.innerHTML = med.message;
-
-    console.log(med);
-}
 
 async function get_average() {
 
@@ -54,7 +54,7 @@ async function get_average() {
 
     const display = document.getElementById("average");
     display.innerHTML= `Average : ${med.message}
-    <button type="button" onclick="hide_average()"> DONE</button>`; 
+    <button type="button" onclick="hide_average()">DONE</button>`; 
 
     document.getElementById("average_").style.display = "block"
 }
