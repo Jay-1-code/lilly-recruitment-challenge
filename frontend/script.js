@@ -12,7 +12,7 @@ async function Display_all_med() {
         let med = med_list[i];
         
         if (med.name === "" || med === null){
-            med.name = "empty string";
+            med.name = "Unknown Medicine";
             console.log(med);
             list.innerHTML += `<ul><li>${med.name} - ${med.price}</li></ul>`;
         }
@@ -29,17 +29,16 @@ function hide_med(){
 
 
 async function Search_for_medicine() {
-    let search = document.getElementById('MedName').value.trim();
-    console.log(search);
+    let search = document.getElementById('MedName').value.trim()
+    console.log(search.toLowerCase());
         if (search != ""){
             const response = await fetch(`http://127.0.0.1:8000/medicines/${search}`);
             const med = await response.json();
             const display = document.getElementById("search");
+            console.log(med)
 
-                if(!med.error){
-                display.innerHTML = `${search} - price : ${med["price"]}`;
-                console.log(search);
-                console.log(med.error);
+                if(!med.error ){
+                        display.innerHTML = `${search} - price : ${med["price"]}`;
                 }
                 else{
                     alert("Name does not exist");
@@ -73,30 +72,34 @@ async function delete_Med(){
     const formData = new FormData(name)
     const medName = formData.get('name').trim()
 
+    if (medName != ""){
     const med_response = await fetch(`http://127.0.0.1:8000/medicines/${formData.get("name")}`);
     const search = await med_response.json();
-    console.log(search.error);
+    console.log(search);
 
-    if (!search.error && medName != ""){
-        const check = confirm(`Are you sure you want to delete "${medName}" `);
-        if (check){
-            console.log("Deleting:", FormData);
-            
-            const response = await fetch(`http://127.0.0.1:8000/delete`, {
-            method: "DELETE" , body: formData });
-            const data = await response.json();
-            //console.log(data);
+        if (!search.error){
+            const check = confirm(`Are you sure you want to delete "${medName}" `);
+            if (check){
+                console.log("Deleting:", formData);
+                
+                const response = await fetch(`http://127.0.0.1:8000/delete`, {
+                method: "DELETE" , body: formData });
+                const data = await response.json();
+                console.log(` this ${data}`);
 
-            const display = document.getElementById("result");
-            display.innerText = data.message;
-            document.getElementById("delete_name").style.display = "none"
-        }
+                alert(data.message);
+                document.getElementById("delete_name").style.display = "none"
+            }
+            else{
+                document.getElementById("delete_name").style.display = "none";
+        }}
         else{
-            return;
-    }}
+            alert(`${search.error}`);
+            document.getElementById("delete_name").style.display = "none";
+        }
+    }
     else{
-        alert(`${search.error}`);
-        document.getElementById("delete_name").style.display = "none";
+        alert("Input A Name");
     }
 }
 
@@ -114,7 +117,7 @@ function open_add_Med(){
 }
 function close_add_Med(){
     document.getElementById("add_popup").style.display = "none";
-    document.getElementById("add_display").style.display = "none";
+   
 }
 
 async function Add_Medicine(){
@@ -132,18 +135,15 @@ async function Add_Medicine(){
                 method : "POST",
                 body : formData
                 });
-
                 const data = await response.json();
-                const display = document.getElementById("add_display");
-                console.log(display);
-                display.innerHTML = data.message;
+                alert(data.message);
             }
         else{
             alert(`${formData.get("name")} already exist`);
             };
         }
-        else{
-            alert("Fill both inputs");
+    else{
+        alert("Fill both inputs");
         }
 
  }

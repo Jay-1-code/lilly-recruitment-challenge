@@ -18,65 +18,53 @@
         <input id="MedName" placeholder="Search by name">
         <button onclick="Search_for_medicine()">Search</button>
         </div>
-       <!--remember to add this at the buttom-->
-
-
-        
+      
 
         <div class="second_row">
-        <button onclick="open_add_Med()"> Add Med </button>
-        <button onclick="open_update()">Update Price</button>
-        <button onclick="show_delete_button()">Delete</button>
-        </div>
+            <button onclick="open_add_Med()"> Add Med </button>
+            <button onclick="open_update()">Update Price</button>
+            <button onclick="show_delete_button()">Delete</button>
+            </div>
 
-        <div class="below">
-        <div id="add_popup" style="display:none;"> 
-            <form id ="add_form">
-                <input name="name" placeholder="Medicine name">
-                <input name="price" placeholder="price" type="number">
-                <button type="button" onclick="Add_Medicine()"> Add </button>
-                <button type = 'button' onclick="close_add_Med()">Done</button>
-            </form>
-        </div>
-        <div id="add_display"></div>
+            <div class="below">
+            <div id="add_popup" style="display:none;"> 
+                <form id ="add_form">
+                    <input name="name" placeholder="Medicine name">
+                    <input name="price" placeholder="price" type="number" min="0">
+                    <button type="button" onclick="Add_Medicine()"> Add </button>
+                    <button type = 'button' onclick="close_add_Med()">Done</button>
+                </form>
+            </div>
+            <div id="add_display"></div>
+
+            
+            <div id = "update_popup" style="display:none;">
+                <form id="update_form">
+                    <input name="name" placeholder="Medicine name">
+                    <input name="price" placeholder="price" type="number" min="0">
+                    <button type="button" onclick="update_Med()">Update</button>
+                    <button type="button" onclick="close_update()"> Done</button>
+                </form>
+            </div>
 
         
-        <div id = "update_popup" style="display:none;">
-            <form id="update_form">
-                <input name="name" placeholder="Medicine name">
-                <input name="price" placeholder="price" type="number">
-                <button type="button" onclick="update_Med()">Update</button>
-                <button type="button" onclick="close_update()"> Done</button>
+            <form id="delete_name" style="display: none;">
+                <input name="name" placeholder="Medicine Name">
+                <button type="button" onclick="delete_Med()">Delete</button>
             </form>
         </div>
-        <div id="update_display"></div>
-
         
-        <form id="delete_name" style="display: none;">
-            <input name="name" placeholder="Medicine Name">
-            <button type="button" onclick="delete_Med()">Delete</button>
-        </form>
-        <div id="result"></div>
-        </div>
         
 
         <div class="third_row">
-        <button onclick="Display_all_med()">Display all</button>
-       
-
-        <button onclick="get_average()"> Average </button>
-        <div id="average_" style="display:block;" >
-            <!--<div id="average"> </div>-->
+            <button onclick="Display_all_med()">Display all</button>
+            <button onclick="get_average()"> Average </button>
         </div>
-        </div>
-
-        <div class="results">
-            <div id="average"> </div>
-            <div id="display" style="display:block;"></div>
-           
-
-                <div id="search"></div> 
-        </div>
+        
+        <div id="average"> </div>
+        <div id="display" style="display:block;"></div>
+        <div id="search"></div> 
+        
 
 
     </main>

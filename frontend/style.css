@@ -94,12 +94,16 @@ h1 {
   margin-top: 7px;
   text-align: center;
   color: red;
+  margin-bottom: 12px;
+}
+#display{
+  text-align: center;
 }
 
-#display{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#search{
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 7px;
 }
 
 button {
