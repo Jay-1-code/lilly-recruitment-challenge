@@ -14,6 +14,52 @@
         <h1>Medicine Tracker</h1>
     </header>
     <main>
+        <input id="MedName" placeholder="Search by name">
+        <button onclick="Search_for_medicine()">Search</button>
+        <div id="search"></div>
+
+        <button onclick="Display_all_med()">Display all</button>
+        <div id="display" style="display:block;"></div>
+
+
+        <button onclick="get_average()"> Average </button>
+        <div id="average_" style="display:block;" >
+            <div id="average"> </div>
+        </div>
+
+        <button onclick="open_add_Med()"> Add gear </button>
+        <div id="add_popup" style="display:none;"> 
+            <form id ="add_form">
+                <input name="name" placeholder="Medicine name">
+                <input name="price" placeholder="price" type="number">
+                <button type="button" onclick="Add_Medicine()"> Add </button>
+                <button type = 'button' onclick="close_add_Med()">Done</button>
+            </form>
+        </div>
+        <div id="add_display"></div>
+
+
+                
+        <button onclick="open_update()">Update Quantity</button>
+        <div id = "update_popup" style="display:none;">
+            <form id="update_form">
+                <input name="name" placeholder="Medicine name">
+                <input name="price" placeholder="price" type="number">
+                <button type="button" onclick="update_Med()">Update</button>
+                <button type="button" onclick="close_update()"> Done</button>
+            </form>
+        </div>
+        <div id="update_display"></div>
+
+
+        <button onclick="show_delete_button()">Delete</button>
+        <form id="delete_name" style="display: none;">
+            <input name="name" placeholder="Medicine Name">
+            <button type="button" onclick="delete_Med()">Delete</button>
+        </form>
+        <div id="result"></div>
+
+
 
     </main>
     <script src="script.js"></script>

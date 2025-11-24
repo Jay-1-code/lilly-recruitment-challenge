@@ -130,11 +130,24 @@ def get_average():
     with open("file.json") as meds:
         current_db = json.load(meds)
         total_price = 0
+        invalid_price_count = 0
+        valid_price_count = 0
+
         for med in current_db['medicines']:
             price = med['price']
-            total_price += price
-        average = total_price/price
-        return{"message": {average} }
+            if isinstance(price,(float,int)):
+                total_price += price
+                valid += 1
+            else:
+                invalid_price_count += 1
+
+        if valid_price_count == 0:
+            return{"message": "No Valid Input"}
+
+            
+        average = total_price/valid_price_count
+        return{"message" :f" The  average is {average} with {invalid_price_count} invalid input(s) and {valid_price_count} valid input(s)"}
+    
 
         
 
