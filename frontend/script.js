@@ -48,7 +48,7 @@ async function Search_for_medicine() {
         };
     };
 
-
+//Get Average Function Section
 async function get_average() {
 
     const response = await fetch("http://127.0.0.1:8000/averages");
@@ -67,42 +67,37 @@ function hide_average(){
 }
 
 
+// Delete Function Section
 async function delete_Med(){
     const name = document.getElementById("delete_name");
     const formData = new FormData(name)
     const medName = formData.get('name').trim()
 
     if (medName != ""){
-    const med_response = await fetch(`http://127.0.0.1:8000/medicines/${formData.get("name")}`);
-    const search = await med_response.json();
-    console.log(search);
-
-        if (!search.error){
-            const check = confirm(`Are you sure you want to delete "${medName}" `);
-            if (check){
-                console.log("Deleting:", formData);
-                
-                const response = await fetch(`http://127.0.0.1:8000/delete`, {
-                method: "DELETE" , body: formData });
-                const data = await response.json();
-                console.log(` this ${data}`);
-
-                alert(data.message);
-                document.getElementById("delete_name").style.display = "none"
-            }
+        const med_response = await fetch(`http://127.0.0.1:8000/medicines/${formData.get("name")}`);
+        const search = await med_response.json();
+        console.log(search);
+            if (!search.error){
+                const check = confirm(`Are you sure you want to delete "${medName}" `);
+                if (check){
+                    const response = await fetch(`http://127.0.0.1:8000/delete`, {
+                    method: "DELETE" , body: formData });
+                    const data = await response.json();
+                    alert(data.message);
+                    document.getElementById("delete_name").style.display = "none"
+                }
+                else{
+                    document.getElementById("delete_name").style.display = "none";
+            }}
             else{
+                alert(`${search.error}`);
                 document.getElementById("delete_name").style.display = "none";
-        }}
-        else{
-            alert(`${search.error}`);
-            document.getElementById("delete_name").style.display = "none";
+            }
         }
-    }
     else{
         alert("Input A Name");
     }
 }
-
 
 function show_delete_button(){
     document.getElementById('delete_name').style.display = "block";
@@ -110,7 +105,7 @@ function show_delete_button(){
 
 
 
-//
+// ADD Medicine Section
 function open_add_Med(){
     document.getElementById("add_popup").style.display = "block";
 
@@ -119,7 +114,6 @@ function close_add_Med(){
     document.getElementById("add_popup").style.display = "none";
    
 }
-
 async function Add_Medicine(){
     const form = document.getElementById("add_form");
     const formData = new FormData(form);
@@ -148,10 +142,9 @@ async function Add_Medicine(){
 
  }
 
-//this is the update section
+///Update Section
 function open_update(){
     document.getElementById("update_popup").style.display = "block";
- 
 }
 
 function close_update(){
@@ -171,22 +164,16 @@ async function update_Med() {
         if (!search.error){
             const response = await fetch("http://127.0.0.1:8000/update", {
                 method: "POST",
-                body: formData
-            });
+                body: formData });
 
             const data = await response.json();
-            const display = document.getElementById("update_display");
-            //display.innerText = data.message;
-            alert(data.message)
-            console.log(`${formData.get("name")} i exist `)
+            alert(data.message);
             }
-            else{
-                alert(`${formData.get("name")} does not exist`)
-                console.log(`${formData.get("name")} dont exist`)
+        else{
+            alert(`${formData.get("name")} does not exist`)
             };
-        } 
+        }
     else{
         alert("Fill both input");
     };
-
 }

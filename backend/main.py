@@ -125,6 +125,13 @@ def delete_med(name: str = Form(...)):
     return {"error": "Medicine not found"}
 
 # Add your average function here
+"""This function reads and loads the json file,
+     checks if the price is a valid: if its a float, int or not
+     it counts both valid and invalid variable seperately,
+     Gets the  average of the valid data
+     then it returns the information of average , the number of valid and invalid input(s)
+
+"""
 @app.get("/averages")
 def get_average():
     with open("data.json") as meds:
