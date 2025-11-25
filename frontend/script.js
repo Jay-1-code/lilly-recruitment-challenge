@@ -41,7 +41,7 @@ async function Search_for_medicine() {
                         display.innerHTML = `${search} - price : ${med["price"]}`;
                 }
                 else{
-                    alert("Name does not exist");
+                    alert(med.error);
                 }}
         else{
             alert("Input A Name");
